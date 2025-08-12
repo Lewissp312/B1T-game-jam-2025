@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Pot
+  - Flower bed
+  - Flower
   - Sunshine
   layers:
   - Default
