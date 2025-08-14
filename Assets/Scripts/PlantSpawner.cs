@@ -22,7 +22,7 @@ public class PlantSpawner : MonoBehaviour{
             _flowerBedTransforms.RemoveAt(randomIndex);
 
             GameObject flower = Instantiate(_plantPrefab);
-            _plantPrefab.transform.position = bedToSpawnAt.position;
+            flower.transform.position = bedToSpawnAt.position;
         }
     }
 }
