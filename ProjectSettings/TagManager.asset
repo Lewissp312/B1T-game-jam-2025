@@ -8,6 +8,10 @@ TagManager:
   - Flower bed
   - Flower
   - Sunshine
+  - Pesticide
+  - Stick
+  - Dog
+  - Pest
   - Enemy
   layers:
   - Default
