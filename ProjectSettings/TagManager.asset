@@ -8,6 +8,10 @@ TagManager:
   - Flower bed
   - Flower
   - Sunshine
+  - Pesticide
+  - Stick
+  - Dog
+  - Pest
   layers:
   - Default
   - TransparentFX
