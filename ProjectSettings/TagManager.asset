@@ -12,6 +12,7 @@ TagManager:
   - Stick
   - Dog
   - Pest
+  - Enemy
   layers:
   - Default
   - TransparentFX
