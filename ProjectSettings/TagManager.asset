@@ -14,6 +14,8 @@ TagManager:
   - Pest
   - Enemy
   - Flower bed interact
+  - Pest interact
+  - Dog interact
   layers:
   - Default
   - TransparentFX
