@@ -51,6 +51,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (transform.position.y > 14)
+        {
+            transform.position = new Vector3(transform.position.x, 14, -2);
+        }
+        else if (transform.position.y < -14)
+        {
+            transform.position = new Vector3(transform.position.x, -14, -2);
+        }
+        if (transform.position.x > 24)
+        {
+            transform.position = new Vector3(24, transform.position.y, -2);
+        }
+        else if (transform.position.x < -5)
+        {
+            transform.position = new Vector3(-5, transform.position.y, -2);
+        }
         if (_interactAction.WasPressedThisFrame())
         {
             switch (_heldItemType)
@@ -60,7 +76,7 @@ public class PlayerController : MonoBehaviour
                     if (_isOnFlowerBed && _currentFlowerBed.transform.Find("Plant(Clone)") == null)
                     {
                         _heldFlower.transform.SetParent(_currentFlowerBed.transform);
-                        _heldFlower.transform.localPosition = new Vector3(0,0,-0.25f);
+                        _heldFlower.transform.localPosition = new Vector3(0, 0, -0.25f);
                         _heldFlower.GetComponent<BoxCollider2D>().enabled = true;
                         _heldFlower = gameObject;
                         _heldItemType = Items.NONE;
@@ -86,7 +102,7 @@ public class PlayerController : MonoBehaviour
                             foreach (int i in enemiesToRemove)
                             {
                                 _currentPests.Remove(i);
-                            } 
+                            }
                         }
                     }
                     break;

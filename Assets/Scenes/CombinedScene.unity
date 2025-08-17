@@ -4410,7 +4410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
@@ -6718,15 +6718,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 789091895379243023, guid: 93f821aab7a21234488e9da1a0d97e04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.85852
+      value: 10.15
       objectReference: {fileID: 0}
     - target: {fileID: 789091895379243023, guid: 93f821aab7a21234488e9da1a0d97e04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.60426
+      value: -5.01
       objectReference: {fileID: 0}
     - target: {fileID: 789091895379243023, guid: 93f821aab7a21234488e9da1a0d97e04, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.01
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 789091895379243023, guid: 93f821aab7a21234488e9da1a0d97e04, type: 3}
       propertyPath: m_LocalRotation.w
