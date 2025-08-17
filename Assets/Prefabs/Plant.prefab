@@ -60,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: f8609ccede3d2b84eb86c6f308c8b382, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a0d8052ce6983bd40b6d93941b804eb3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 011c6ddb63c6ddf4ebb56a934123d93a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -155,13 +155,13 @@ MonoBehaviour:
   _growthRate: 1
   _isUnderSunshine: 0
   _states:
-  - sprite: {fileID: 21300000, guid: be30d7667a32e9243b21b7ffaecbb73a, type: 3}
+  - sprite: {fileID: 21300000, guid: f8022c8d5680f2e47ae60643eb00798b, type: 3}
     minGrowth: 0
-  - sprite: {fileID: 21300000, guid: 772a63448cc4536498622e14bd56598f, type: 3}
+  - sprite: {fileID: 21300000, guid: 2e3d609e49491fb4f8bc4603cdac0a1c, type: 3}
     minGrowth: 5
-  - sprite: {fileID: 21300000, guid: 4f59100aefd212a4d9579d721f09a582, type: 3}
+  - sprite: {fileID: 21300000, guid: 0017356d8bbad864080f3c7d86b36adb, type: 3}
     minGrowth: 90
-  - sprite: {fileID: 21300000, guid: a0d8052ce6983bd40b6d93941b804eb3, type: 3}
+  - sprite: {fileID: 21300000, guid: 011c6ddb63c6ddf4ebb56a934123d93a, type: 3}
     minGrowth: 100
 --- !u!114 &1786087143666995450
 MonoBehaviour:
@@ -412,6 +412,10 @@ PrefabInstance:
     - target: {fileID: 8858120093110651316, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
       propertyPath: m_Name
       value: GrowthCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9208230955568920193, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
