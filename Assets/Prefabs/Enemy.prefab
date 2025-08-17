@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _attackInterval: 2
+  _healthBarImg: {fileID: 2056847547694294936}
 --- !u!114 &4379083849709117119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +81,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _healthBarImg: {fileID: 2056847547694294936}
 --- !u!195 &3815911639326488016
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1d734e8ea70014f45ab37de1fdef4fe7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 385601781ce91a74f802dcd73d88dcd8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -302,6 +302,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5693376111427172084}
     m_Modifications:
+    - target: {fileID: 3453839535388671330, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953599835731307314, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953599835731307314, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953599835731307314, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953599835731307314, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6816029025436339577, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -332,7 +352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6816029025436339577, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.25
+      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 6816029025436339577, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -344,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6816029025436339577, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.75
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6816029025436339577, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -382,6 +402,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8385415024696121355, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: b72b3b92809164b409d272e5bf35d34a, type: 2}
     - target: {fileID: 8858120093110651316, guid: ed348a8404b55284bb546f199158f4d1, type: 3}
       propertyPath: m_Name
       value: BarCanvas

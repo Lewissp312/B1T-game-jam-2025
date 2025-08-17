@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 
 public class EnemyBehaviour : MonoBehaviour{
@@ -16,6 +17,7 @@ public class EnemyBehaviour : MonoBehaviour{
     [SerializeField] private float _attackInterval = 2f;
     private int _ID;
     private bool _canAttack = true;
+    [SerializeField] private Image _healthBarImg;
 
     private NavMeshAgent _agent => GetComponentInChildren<NavMeshAgent>();
 
@@ -23,6 +25,8 @@ public class EnemyBehaviour : MonoBehaviour{
 
     void Start()
     {
+        _healthBarImg.material = new(_healthBarImg.material);
+
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         _ID = gameManager.GetID();
         // set the target
@@ -54,6 +58,10 @@ public class EnemyBehaviour : MonoBehaviour{
                 }
             }
         }
+
+        HealthComponent hpComp = GetComponent<HealthComponent>();
+        _healthBarImg.material.SetFloat("_CurrentValue", hpComp.Health);
+        _healthBarImg.material.SetFloat("_MaxValue", hpComp.MaxHealth);
     }
 
     // ----------------------------------------------------------------------------------------------- //

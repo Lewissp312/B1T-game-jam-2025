@@ -59,9 +59,11 @@ public class PlayerController : MonoBehaviour
                     //TODO: make the flower unable to be moved if it is being attacked
                     if (_isOnFlowerBed && _currentFlowerBed.transform.Find("Plant(Clone)") == null)
                     {
+                        // ! called when dropping a flower onto the flower bed
                         _heldFlower.transform.SetParent(_currentFlowerBed.transform);
                         _heldFlower.transform.localPosition = new Vector3(0,0,-0.25f);
                         _heldFlower.GetComponent<BoxCollider2D>().enabled = true;
+                        _heldFlower.GetComponentInChildren<PlantGrower>().IsPlacedDown();
                         _heldFlower = gameObject;
                         _heldItemType = Items.NONE;
                     }
@@ -123,8 +125,9 @@ public class PlayerController : MonoBehaviour
                         _heldFlower = _currentFlowerBed.transform.Find("Plant(Clone)").gameObject;
                         _heldFlower.GetComponent<BoxCollider2D>().enabled = false;
                         _heldFlower.transform.SetParent(gameObject.transform);
-                        _heldFlower.transform.localPosition = new Vector3(0, 0.4f, 0);
+                        _heldFlower.transform.localPosition = new Vector3(0, 1.25f, 0);
                         _heldItemType = Items.FLOWER;
+                        _heldFlower.GetComponentInChildren<PlantGrower>().IsPickedUp();
                     }
                     break;
             }
@@ -134,6 +137,7 @@ public class PlayerController : MonoBehaviour
             switch (_heldItemType)
             {
                 case Items.FLOWER:
+                    print("flower dropped");
                     GameObject _itemToDrop = transform.Find("Plant(Clone)").gameObject;
                     _itemToDrop.transform.SetParent(null);
                     _itemToDrop.GetComponent<BoxCollider2D>().enabled = true;

@@ -117,7 +117,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BlackReplace: {r: 0.06437528, g: 1, b: 0, a: 1}
+    - _BlackReplace: {r: 0.13461673, g: 0.42138356, b: 0.11528413, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _InitialColorB: {r: 0, g: 0, b: 0, a: 1}
@@ -125,7 +125,7 @@ Material:
     - _NewColorA: {r: 1, g: 0, b: 0, a: 1}
     - _NewColorB: {r: 0, g: 1, b: 0.7922187, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _WhiteReplace: {r: 0.87385654, g: 1, b: 0, a: 1}
+    - _WhiteReplace: {r: 1, g: 0.945182, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &6540071373738401421
