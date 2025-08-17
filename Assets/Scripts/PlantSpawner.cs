@@ -16,13 +16,15 @@ public class PlantSpawner : MonoBehaviour{
         Unity.Mathematics.Random random = new((uint)helperRandom.Next(1, int.MaxValue-1)); // a uint that is > 0 must be passed in for it to work
 
 
-        for (int i = 0; i < _numPlantsToSpawn; i++){
+        for (int i = 0; i < _numPlantsToSpawn; i++)
+        {
             int randomIndex = random.NextInt(0, _flowerBedTransforms.Count);
             Transform bedToSpawnAt = _flowerBedTransforms[randomIndex];
             _flowerBedTransforms.RemoveAt(randomIndex);
 
             GameObject flower = Instantiate(_plantPrefab);
-            flower.transform.position = bedToSpawnAt.position + new Vector3(0,0,-0.5f);
+            flower.transform.position = bedToSpawnAt.position + new Vector3(0, 0, -0.5f);
+            flower.transform.parent = bedToSpawnAt;
         }
     }
 }
