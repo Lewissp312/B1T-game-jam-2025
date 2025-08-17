@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private GameObject _currentFlower;
     private GameObject _heldFlower;
     private Dictionary<int, GameObject> _currentPests;
+    private Dictionary<int, GameObject> _currentDogs;
     [SerializeField] private GameObject _stick;
     [SerializeField] private GameObject _pesticide;
     private bool _isOnPesticide;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
         //The Q key or east gamepad button (e.g B, Circle)
         _dropAction = InputSystem.actions.FindAction("Drop");
         _currentPests = new();
+        _currentDogs = new();
         _body = GetComponent<Rigidbody2D>();
         _heldItemType = Items.NONE;
         _currentFlowerBed = gameObject;
@@ -51,6 +53,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (transform.position.y > 14)
+        {
+            transform.position = new Vector3(transform.position.x, 14, -2);
+        }
+        else if (transform.position.y < -14)
+        {
+            transform.position = new Vector3(transform.position.x, -14, -2);
+        }
+        if (transform.position.x > 24)
+        {
+            transform.position = new Vector3(24, transform.position.y, -2);
+        }
+        else if (transform.position.x < -5)
+        {
+            transform.position = new Vector3(-5, transform.position.y, -2);
+        }
         if (_interactAction.WasPressedThisFrame())
         {
             switch (_heldItemType)
@@ -61,7 +79,7 @@ public class PlayerController : MonoBehaviour
                     {
                         // ! called when dropping a flower onto the flower bed
                         _heldFlower.transform.SetParent(_currentFlowerBed.transform);
-                        _heldFlower.transform.localPosition = new Vector3(0,0,-0.25f);
+                        _heldFlower.transform.localPosition = new Vector3(0, 0, -0.25f);
                         _heldFlower.GetComponent<BoxCollider2D>().enabled = true;
                         _heldFlower.GetComponentInChildren<PlantGrower>().IsPlacedDown();
                         _heldFlower = gameObject;
@@ -69,7 +87,25 @@ public class PlayerController : MonoBehaviour
                     }
                     break;
                 case Items.STICK:
-                    //TODO: stick stuff
+                    if (_isOnDog)
+                    { 
+                        List<int> enemiesToRemove = new();
+                        foreach (KeyValuePair<int, GameObject> dog in _currentDogs)
+                        {
+                            dog.Value.GetComponent<HealthComponent>().TakeDamage(5);
+                            if (!dog.Value.activeInHierarchy)
+                            {
+                                enemiesToRemove.Add(dog.Key);
+                            }
+                        }
+                        if (enemiesToRemove.Count != 0)
+                        {
+                            foreach (int i in enemiesToRemove)
+                            {
+                                _currentDogs.Remove(i);
+                            }
+                        }   
+                    }
                     break;
                 case Items.PESTICIDE:
                     if (_isOnPest)
@@ -88,7 +124,7 @@ public class PlayerController : MonoBehaviour
                             foreach (int i in enemiesToRemove)
                             {
                                 _currentPests.Remove(i);
-                            } 
+                            }
                         }
                     }
                     break;
@@ -141,6 +177,7 @@ public class PlayerController : MonoBehaviour
                     GameObject _itemToDrop = transform.Find("Plant(Clone)").gameObject;
                     _itemToDrop.transform.SetParent(null);
                     _itemToDrop.GetComponent<BoxCollider2D>().enabled = true;
+                    _heldFlower = gameObject;
                     break;
                 case Items.STICK:
                     _stick.transform.SetParent(null);
@@ -201,13 +238,13 @@ public class PlayerController : MonoBehaviour
         {
             print("Left Flower bed interact");
             _isOnFlowerBed = false;
-            _currentFlowerBed = gameObject;
+            // _currentFlowerBed = gameObject;
         }
         if (collision.gameObject.CompareTag("Flower"))
         {
             print("Left flower");
             _isOnFlower = false;
-            _currentFlower = gameObject;
+            // _currentFlower = gameObject;
         }
         if (collision.gameObject.CompareTag("Pesticide"))
         {
@@ -219,9 +256,14 @@ public class PlayerController : MonoBehaviour
             _isOnStick = false;
             print("Left stick");
         }
-        if (collision.gameObject.CompareTag("Dog"))
+        if (collision.gameObject.CompareTag("Dog interact"))
         {
-            _isOnDog = false;
+            GameObject enemy = collision.transform.parent.gameObject;
+            if (enemy.activeInHierarchy)
+            {
+                _currentDogs.Remove(enemy.GetComponent<EnemyBehaviour>().GetID());
+            }
+            if (_currentDogs.Count == 0) _isOnDog = false;
             print("Left dog");
         }
         if (collision.gameObject.CompareTag("Pest interact"))
