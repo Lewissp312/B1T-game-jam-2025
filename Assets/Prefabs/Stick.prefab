@@ -135,7 +135,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5596942366748513257}
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 252434883929459106}
   - component: {fileID: 8495202660251157900}
   m_Layer: 0
-  m_Name: interact collider
+  m_Name: Interact collider
   m_TagString: Stick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -420,7 +420,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.00000020861626, y: 0}
+  m_Offset: {x: -0.030889034, y: 0.2634585}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -430,7 +430,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.4615388, y: 1}
+  m_Size: {x: 0.84377384, y: 1.308882}
   m_EdgeRadius: 0
 --- !u!1 &8242461415188438609
 GameObject:
