@@ -105,7 +105,7 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
-    - _CurrentValue: 7
+    - _CurrentValue: 0
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -115,7 +115,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _MaxValue: 10
+    - _MaxValue: 100
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005

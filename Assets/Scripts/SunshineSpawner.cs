@@ -17,10 +17,10 @@ public class SunshineSpawner : MonoBehaviour
     [SerializeField] private GameObject _sunshinePrefab;
 
 
-    [SerializeField] private int _numConcurrentSunshines = 3; // how many sunshines will be active at the same time for the entire game
-    [SerializeField] private float _minPossibleSunshineDuration = 4f; // each sunshine will last for a random duration between these 2 amounts
-    [SerializeField] private float _maxPossibleSunshineDuration = 6f;
-    [SerializeField] private float _sunshineSpawnStaggerTime = 1f;
+    private readonly int _numConcurrentSunshines = 4; // how many sunshines will be active at the same time for the entire game
+    private readonly float _minPossibleSunshineDuration = 10f; // each sunshine will last for a random duration between these 2 amounts
+    private readonly float _maxPossibleSunshineDuration = 20f;
+    private readonly float _sunshineSpawnStaggerTime = 1f;
 
     private int MIN_CONCURRENT_SUNSHINES = 1;
     [SerializeField] private float _decrementConcurrentSunshineInterval = 50f;
