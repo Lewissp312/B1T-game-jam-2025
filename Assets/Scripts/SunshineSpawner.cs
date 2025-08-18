@@ -22,6 +22,9 @@ public class SunshineSpawner : MonoBehaviour
     private readonly float _maxPossibleSunshineDuration = 20f;
     private readonly float _sunshineSpawnStaggerTime = 1f;
 
+    private int MIN_CONCURRENT_SUNSHINES = 1;
+    [SerializeField] private float _decrementConcurrentSunshineInterval = 50f;
+
 
     private Unity.Mathematics.Random _random;
 
@@ -43,20 +46,26 @@ public class SunshineSpawner : MonoBehaviour
         // despawning and spawning
 
         for (int i = 0; i < _numConcurrentSunshines; i++){
-            StartCoroutine(SpawnSunshine(_sunshineSpawnStaggerTime * (i+1)));
+            StartCoroutine(SpawnSunshine(_sunshineSpawnStaggerTime * (i+1), i+1));
         }
+        StartCoroutine(DecrementNumSunshines());
     }
 
     // ----------------------------------------------------------------------------------------------- //
 
     // a recursive coroutine that when a sunshine is done then it is moved to a new position repeatedly until the game ends
-    private IEnumerator SpawnSunshine(float initialDelaySeconds){
+    private IEnumerator SpawnSunshine(float initialDelaySeconds, int index){
         yield return new WaitForSeconds(initialDelaySeconds);
 
 
         GameObject sunshine = Instantiate(_sunshinePrefab);
 
         while (true){
+            if (index > _numConcurrentSunshines){
+                Destroy(sunshine);
+                break;
+            }
+
             sunshine.SetActive(false);
             // move the sunshine to an empty bed
             Transform bedToOccupy = _availableBeds[_random.NextInt(0, _availableBeds.Count)];
@@ -68,6 +77,13 @@ public class SunshineSpawner : MonoBehaviour
             yield return new WaitForSeconds(_random.NextFloat(_minPossibleSunshineDuration, _maxPossibleSunshineDuration));
 
             _currentBedsShinedOn.Remove(bedToOccupy);
+        }
+    }
+
+    private IEnumerator DecrementNumSunshines(){
+        while (_numConcurrentSunshines > MIN_CONCURRENT_SUNSHINES){
+            yield return new WaitForSeconds(_decrementConcurrentSunshineInterval);
+            _numConcurrentSunshines--;
         }
     }
 

@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 
@@ -18,6 +19,8 @@ public class EnemyBehaviour : MonoBehaviour{
     private int _ID;
     private bool _canAttack = true;
     [SerializeField] private Image _healthBarImg;
+
+    [SerializeField] private AudioClip _attackSoundClip; // whenever in range of a flower and is attacking/damaging it
 
     private NavMeshAgent _agent => GetComponentInChildren<NavMeshAgent>();
 
@@ -51,6 +54,7 @@ public class EnemyBehaviour : MonoBehaviour{
                     if (Vector2.Dot((flower.transform.position - transform.position).normalized, (flBed.transform.position - transform.position).normalized) >= 0.7f){
                         // means that the flower pot and flower are in the same direction so they are LIKELY overlapping
                         flower.GetComponent<HealthComponent>().TakeDamage(_damage);
+                        GameManager.Instance.PlayClipAtPoint(clip: _attackSoundClip, position: transform.position);
                         StartCoroutine(CanAttackCooldown());
 
                         break;

@@ -24,6 +24,12 @@ public class PlayerController : MonoBehaviour
     private bool _isOnDog;
     private bool _isOnPest;
 
+    [SerializeField] private AudioSource _walkSoundSource; // mute whenever player is still, unmute when walking
+    [SerializeField] private AudioClip _stickSoundClip; // whenever the stick is picked up or used
+    [SerializeField] private AudioClip _pesticideSoundClip; // whenever the pesticide is picked up or used
+    [SerializeField] private AudioClip _plantSoundClip; // whenever a plant is picked up or placed down
+
+
     private const float _speed = 10;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,6 +52,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 moveValue = _moveAction.ReadValue<Vector2>();
+        _walkSoundSource.mute = moveValue == Vector2.zero;
         moveValue = Vector3.Normalize(moveValue);
         _body.MovePosition((Vector2)transform.position + (_speed * Time.deltaTime * moveValue));
         // transform.Translate(_speed * Time.deltaTime * moveValue);
@@ -67,17 +74,20 @@ public class PlayerController : MonoBehaviour
                         _heldFlower.transform.localPosition = new Vector3(0, 0f, -0.25f);
                         _heldFlower.GetComponent<BoxCollider2D>().enabled = true;
                         _heldFlower.GetComponentInChildren<PlantGrower>().IsPlacedDown();
-                        // _heldFlower = gameObject;
+                        GameManager.Instance.PlayClipAtPoint(_plantSoundClip, _heldFlower.transform.position);
+                        _heldFlower = gameObject;
                         _heldItemType = Items.NONE;
                     }
                     break;
                 case Items.STICK:
+                    GameManager.Instance.PlayClipAtPoint(_stickSoundClip, _stick.transform.position);
                     if (_isOnDog)
                     {
                         DamageEnemies(_currentDogs);
                     }
                     break;
                 case Items.PESTICIDE:
+                    GameManager.Instance.PlayClipAtPoint(_pesticideSoundClip, _pesticide.transform.position);
                     if (_isOnPest)
                     {
                         DamageEnemies(_currentPests);
@@ -90,6 +100,7 @@ public class PlayerController : MonoBehaviour
                         _stick.transform.SetParent(transform);
                         _stick.transform.localPosition = new Vector3(0.21f, 0.23f, 1);
                         _heldItemType = Items.STICK;
+                        GameManager.Instance.PlayClipAtPoint(_stickSoundClip, _stick.transform.position);
                     }
                     else if (_isOnPesticide)
                     {
@@ -97,6 +108,7 @@ public class PlayerController : MonoBehaviour
                         _pesticide.transform.SetParent(transform);
                         _pesticide.transform.localPosition = new Vector3(0.225f, 0.37f, 0);
                         _heldItemType = Items.PESTICIDE;
+                        GameManager.Instance.PlayClipAtPoint(_pesticideSoundClip, _pesticide.transform.position);
                     }
                     else if (_isOnFlower)
                     {
@@ -105,6 +117,8 @@ public class PlayerController : MonoBehaviour
                         _currentFlower.transform.localPosition = new Vector3(0.22f, 0.37f, 0);
                         _heldFlower = _currentFlower;
                         _heldItemType = Items.FLOWER;
+                        print($"Current status after picking up: {_heldFlower.GetComponent<BoxCollider2D>().enabled}");
+                        GameManager.Instance.PlayClipAtPoint(_plantSoundClip, _heldFlower.transform.position);
                     }
                     else if (_isOnFlowerBed && _currentFlowerBed.transform.Find("Plant(Clone)") != null)
                     {
@@ -114,6 +128,7 @@ public class PlayerController : MonoBehaviour
                         _heldFlower.transform.localPosition = new Vector3(0.22f, 0.37f, 0);
                         _heldItemType = Items.FLOWER;
                         _heldFlower.GetComponentInChildren<PlantGrower>().IsPickedUp();
+                        GameManager.Instance.PlayClipAtPoint(_plantSoundClip, _heldFlower.transform.position);
                     }
                     break;
             }
@@ -127,6 +142,8 @@ public class PlayerController : MonoBehaviour
                     GameObject _itemToDrop = transform.Find("Plant(Clone)").gameObject;
                     _itemToDrop.transform.SetParent(null);
                     _itemToDrop.GetComponent<BoxCollider2D>().enabled = true;
+                    _heldFlower = gameObject;
+                    GameManager.Instance.PlayClipAtPoint(_plantSoundClip, _heldFlower.transform.position);
                     break;
                 case Items.STICK:
                     _stick.transform.SetParent(null);
