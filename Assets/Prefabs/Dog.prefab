@@ -53,6 +53,7 @@ MonoBehaviour:
   _damage: 1
   _attackInterval: 2
   _healthBarImg: {fileID: 2056847547694294936}
+  _attackSoundClip: {fileID: 8300000, guid: 46c1a706988188f489cc0445da367b3b, type: 3}
 --- !u!114 &4379083849709117119
 MonoBehaviour:
   m_ObjectHideFlags: 0

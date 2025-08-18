@@ -13,6 +13,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject _pestPrefab;
 
     [SerializeField] private float _spawnInterval = 4f;
+    [SerializeField] private float _spawnQuickenAmount = 0.01f;
+    [SerializeField] private float _spawnQuickenInterval = 1f;
     private Unity.Mathematics.Random _random;
 
     
@@ -27,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
 
         _dirIndex = 0;
         StartCoroutine(SpawnEnemies());
+        StartCoroutine(QuickenSpawnTime());
     }
 
     // ----------------------------------------------------------------------------------------------- //
@@ -59,6 +62,13 @@ public class EnemySpawner : MonoBehaviour
             GameObject newEnemy = Instantiate(numSpawns % 2 == 0 ? _dogPrefab : _pestPrefab);
             newEnemy.transform.position = randomSpawnPosition;
             numSpawns++;
+        }
+    }
+
+    private IEnumerator QuickenSpawnTime(){
+        while (true){
+            yield return new WaitForSeconds(_spawnQuickenInterval);
+            _spawnInterval = Mathf.Max(0, _spawnInterval - _spawnQuickenAmount);
         }
     }
 
