@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 4548166988937238117}
   - component: {fileID: 5521189951370215694}
   m_Layer: 0
-  m_Name: interact collider
+  m_Name: Interact collider
   m_TagString: Pest interact
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
