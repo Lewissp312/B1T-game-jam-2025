@@ -53,22 +53,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y > 14)
-        {
-            transform.position = new Vector3(transform.position.x, 14, -2);
-        }
-        else if (transform.position.y < -14)
-        {
-            transform.position = new Vector3(transform.position.x, -14, -2);
-        }
-        if (transform.position.x > 24)
-        {
-            transform.position = new Vector3(24, transform.position.y, -2);
-        }
-        else if (transform.position.x < -5)
-        {
-            transform.position = new Vector3(-5, transform.position.y, -2);
-        }
+        MovementRestrictions();
         if (_interactAction.WasPressedThisFrame())
         {
             switch (_heldItemType)
@@ -79,89 +64,54 @@ public class PlayerController : MonoBehaviour
                     {
                         // ! called when dropping a flower onto the flower bed
                         _heldFlower.transform.SetParent(_currentFlowerBed.transform);
-                        _heldFlower.transform.localPosition = new Vector3(0, 0, -0.25f);
+                        _heldFlower.transform.localPosition = new Vector3(0, 0f, -0.25f);
                         _heldFlower.GetComponent<BoxCollider2D>().enabled = true;
                         _heldFlower.GetComponentInChildren<PlantGrower>().IsPlacedDown();
-                        _heldFlower = gameObject;
+                        // _heldFlower = gameObject;
                         _heldItemType = Items.NONE;
                     }
                     break;
                 case Items.STICK:
                     if (_isOnDog)
-                    { 
-                        List<int> enemiesToRemove = new();
-                        foreach (KeyValuePair<int, GameObject> dog in _currentDogs)
-                        {
-                            dog.Value.GetComponent<HealthComponent>().TakeDamage(5);
-                            if (!dog.Value.activeInHierarchy)
-                            {
-                                enemiesToRemove.Add(dog.Key);
-                            }
-                        }
-                        if (enemiesToRemove.Count != 0)
-                        {
-                            foreach (int i in enemiesToRemove)
-                            {
-                                _currentDogs.Remove(i);
-                            }
-                        }   
+                    {
+                        DamageEnemies(_currentDogs);
                     }
                     break;
                 case Items.PESTICIDE:
                     if (_isOnPest)
                     {
-                        List<int> enemiesToRemove = new();
-                        foreach (KeyValuePair<int, GameObject> pest in _currentPests)
-                        {
-                            pest.Value.GetComponent<HealthComponent>().TakeDamage(5);
-                            if (!pest.Value.activeInHierarchy)
-                            {
-                                enemiesToRemove.Add(pest.Key);
-                            }
-                        }
-                        if (enemiesToRemove.Count != 0)
-                        {
-                            foreach (int i in enemiesToRemove)
-                            {
-                                _currentPests.Remove(i);
-                            }
-                        }
+                        DamageEnemies(_currentPests);
                     }
                     break;
                 case Items.NONE:
                     if (_isOnStick)
                     {
-                        print("Picking up the stick");
                         _stick.transform.Find("Interact collider").gameObject.SetActive(false);
-                        _stick.transform.SetParent(gameObject.transform);
-                        _stick.transform.localPosition = new Vector3(0.14f, 0.5f, 0);
+                        _stick.transform.SetParent(transform);
+                        _stick.transform.localPosition = new Vector3(0.21f, 0.23f, 1);
                         _heldItemType = Items.STICK;
                     }
                     else if (_isOnPesticide)
                     {
-                        print("Picking up the pesticide");
-                        //The collider interferes with object detection
                         _pesticide.transform.Find("Interact collider").gameObject.SetActive(false);
-                        _pesticide.transform.SetParent(gameObject.transform);
-                        _pesticide.transform.localPosition = new Vector3(-0.28f, 0.36f, 0);
+                        _pesticide.transform.SetParent(transform);
+                        _pesticide.transform.localPosition = new Vector3(0.225f, 0.37f, 0);
                         _heldItemType = Items.PESTICIDE;
                     }
                     else if (_isOnFlower)
                     {
                         _currentFlower.GetComponent<BoxCollider2D>().enabled = false;
-                        _currentFlower.transform.SetParent(gameObject.transform);
-                        _currentFlower.transform.localPosition = new Vector3(0, 0.4f, 0);
+                        _currentFlower.transform.SetParent(transform);
+                        _currentFlower.transform.localPosition = new Vector3(0.22f, 0.37f, 0);
                         _heldFlower = _currentFlower;
                         _heldItemType = Items.FLOWER;
-                        print($"Current status after picking up: {_heldFlower.GetComponent<BoxCollider2D>().enabled}");
                     }
                     else if (_isOnFlowerBed && _currentFlowerBed.transform.Find("Plant(Clone)") != null)
                     {
-                        print("Picking up flower");
                         _heldFlower = _currentFlowerBed.transform.Find("Plant(Clone)").gameObject;
                         _heldFlower.GetComponent<BoxCollider2D>().enabled = false;
-                        _heldFlower.transform.SetParent(gameObject.transform);
-                        _heldFlower.transform.localPosition = new Vector3(0, 1.25f, 0);
+                        _heldFlower.transform.SetParent(transform);
+                        _heldFlower.transform.localPosition = new Vector3(0.22f, 0.37f, 0);
                         _heldItemType = Items.FLOWER;
                         _heldFlower.GetComponentInChildren<PlantGrower>().IsPickedUp();
                     }
@@ -177,7 +127,6 @@ public class PlayerController : MonoBehaviour
                     GameObject _itemToDrop = transform.Find("Plant(Clone)").gameObject;
                     _itemToDrop.transform.SetParent(null);
                     _itemToDrop.GetComponent<BoxCollider2D>().enabled = true;
-                    _heldFlower = gameObject;
                     break;
                 case Items.STICK:
                     _stick.transform.SetParent(null);
@@ -258,6 +207,10 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Dog interact"))
         {
+            // This part only handles removing enemies from the dictionary when they move outside the player's range.
+            // It is also triggered whenever an enemy is set to inactive while in the player's range, 
+            // but the removing is prevented here as it would interfer with the looping through the _currentPests dictionary
+            // when the pesticide is used. Removing in this case is handled just after said loop 
             GameObject enemy = collision.transform.parent.gameObject;
             if (enemy.activeInHierarchy)
             {
@@ -268,16 +221,52 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Pest interact"))
         {
-            // This part only handles removing enemies from the dictionary when they move outside the player's range.
-            // It is also triggered whenever an enemy is set to inactive while in the player's range, 
-            // but the removing is prevented here as it would interfer with the looping through the _currentPests dictionary
-            // when the pesticide is used. Removing in this case is handled just after said loop 
             GameObject enemy = collision.transform.parent.gameObject;
             if (enemy.activeInHierarchy)
             {
                 _currentPests.Remove(enemy.GetComponent<EnemyBehaviour>().GetID());
             }
             if (_currentPests.Count == 0) _isOnPest = false;
+        }
+    }
+
+    private void DamageEnemies(Dictionary<int, GameObject> enemyDict)
+    {
+        List<int> enemiesToRemove = new();
+        foreach (KeyValuePair<int, GameObject> enemy in enemyDict)
+        {
+            enemy.Value.GetComponent<HealthComponent>().TakeDamage(5);
+            if (!enemy.Value.activeInHierarchy)
+            {
+                enemiesToRemove.Add(enemy.Key);
+            }
+        }
+        if (enemiesToRemove.Count != 0)
+        {
+            foreach (int i in enemiesToRemove)
+            {
+                enemyDict.Remove(i);
+            }
+        }
+    }
+    
+    private void MovementRestrictions()
+    { 
+        if (transform.position.y > 14)
+        {
+            transform.position = new Vector3(transform.position.x, 14, -2);
+        }
+        else if (transform.position.y < -14)
+        {
+            transform.position = new Vector3(transform.position.x, -14, -2);
+        }
+        if (transform.position.x > 24)
+        {
+            transform.position = new Vector3(24, transform.position.y, -2);
+        }
+        else if (transform.position.x < -5)
+        {
+            transform.position = new Vector3(-5, transform.position.y, -2);
         }
     }
 }
