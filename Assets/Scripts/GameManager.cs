@@ -4,6 +4,9 @@ public class GameManager : MonoBehaviour
 {
     private int _enemyIDCount;
     private int _plantIDCount = 0;
+
+    public GameObject endMenu;
+    public GameObject gameUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

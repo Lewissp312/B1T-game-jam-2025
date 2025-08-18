@@ -429,7 +429,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 47.5, y: 0}
+  m_SizeDelta: {x: 22.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &73147179
 MonoBehaviour:
@@ -481,6 +481,7 @@ GameObject:
   - component: {fileID: 121106605}
   - component: {fileID: 121106604}
   - component: {fileID: 121106606}
+  - component: {fileID: 121106607}
   m_Layer: 0
   m_Name: Flower Bed
   m_TagString: Flower bed
@@ -622,6 +623,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &121106607
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121106598}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &134734981
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +647,7 @@ GameObject:
   - component: {fileID: 134734988}
   - component: {fileID: 134734987}
   - component: {fileID: 134734989}
+  - component: {fileID: 134734990}
   m_Layer: 0
   m_Name: Flower Bed
   m_TagString: Flower bed
@@ -775,6 +789,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &134734990
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134734981}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &153511549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,6 +1160,7 @@ GameObject:
   - component: {fileID: 229799174}
   - component: {fileID: 229799173}
   - component: {fileID: 229799175}
+  - component: {fileID: 229799176}
   m_Layer: 0
   m_Name: Flower Bed
   m_TagString: Flower bed
@@ -1275,6 +1302,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &229799176
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229799167}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &272980022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,7 +1939,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 47.5, y: 0}
+  m_SizeDelta: {x: 22.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &349746150
 MonoBehaviour:
@@ -2525,6 +2564,7 @@ GameObject:
   - component: {fileID: 533134505}
   - component: {fileID: 533134504}
   - component: {fileID: 533134506}
+  - component: {fileID: 533134507}
   m_Layer: 0
   m_Name: Flower Bed
   m_TagString: Flower bed
@@ -2666,6 +2706,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &533134507
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533134498}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &538811396
 GameObject:
   m_ObjectHideFlags: 0
@@ -3153,6 +3205,7 @@ GameObject:
   - component: {fileID: 667721026}
   - component: {fileID: 667721028}
   - component: {fileID: 667721029}
+  - component: {fileID: 667721030}
   m_Layer: 0
   m_Name: Flower Bed
   m_TagString: Flower bed
@@ -3321,6 +3374,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
+--- !u!210 &667721030
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667721020}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &695939945
 GameObject:
   m_ObjectHideFlags: 0
@@ -4121,6 +4186,7 @@ GameObject:
   - component: {fileID: 946054361}
   - component: {fileID: 946054360}
   - component: {fileID: 946054362}
+  - component: {fileID: 946054363}
   m_Layer: 0
   m_Name: Flower Bed
   m_TagString: Flower bed
@@ -4262,6 +4328,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &946054363
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946054354}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &966475505
 GameObject:
   m_ObjectHideFlags: 0
@@ -4300,7 +4378,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 300, y: 220}
+  m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &966475507
 MonoBehaviour:
@@ -4340,6 +4418,7 @@ GameObject:
   - component: {fileID: 975604231}
   - component: {fileID: 975604230}
   - component: {fileID: 975604232}
+  - component: {fileID: 975604233}
   m_Layer: 0
   m_Name: Flower Bed
   m_TagString: Flower bed
@@ -4481,6 +4560,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &975604233
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975604224}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &979758498
 GameObject:
   m_ObjectHideFlags: 0
@@ -4572,6 +4663,7 @@ GameObject:
   - component: {fileID: 995502907}
   - component: {fileID: 995502906}
   - component: {fileID: 995502908}
+  - component: {fileID: 995502909}
   m_Layer: 0
   m_Name: Flower Bed
   m_TagString: Flower bed
@@ -4713,6 +4805,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &995502909
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995502900}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &1048290694
 GameObject:
   m_ObjectHideFlags: 0
@@ -4975,7 +5079,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &1113524399
 MonoBehaviour:
@@ -4989,6 +5093,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1aa787f03853345a682a65043e5864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endMenu: {fileID: 1945962242}
+  gameUI: {fileID: 553064512}
 --- !u!4 &1113524400
 Transform:
   m_ObjectHideFlags: 0
@@ -4998,7 +5104,7 @@ Transform:
   m_GameObject: {fileID: 1113524398}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.58721, y: 10.88488, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5180,6 +5286,7 @@ GameObject:
   - component: {fileID: 1157535060}
   - component: {fileID: 1157535064}
   - component: {fileID: 1157535065}
+  - component: {fileID: 1157535066}
   m_Layer: 0
   m_Name: Cube (9)
   m_TagString: Untagged
@@ -5303,6 +5410,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &1157535066
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157535058}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -100
+  m_SortAtRoot: 0
 --- !u!1 &1182328314
 GameObject:
   m_ObjectHideFlags: 0
@@ -5384,7 +5503,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.13333334, g: 0.41960785, b: 0.11372549, a: 1
+  m_BackGroundColor: {r: 0.13333334, g: 0.41960785, b: 0.11372549, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5409,8 +5528,8 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
-  m_Depth: -1
+  orthographic size: 20
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -5434,7 +5553,7 @@ Transform:
   m_GameObject: {fileID: 1182328314}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.274003, y: 0.42827988, z: -34.987213}
+  m_LocalPosition: {x: 10, y: 0, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6063,6 +6182,7 @@ GameObject:
   - component: {fileID: 1454188759}
   - component: {fileID: 1454188758}
   - component: {fileID: 1454188760}
+  - component: {fileID: 1454188761}
   m_Layer: 0
   m_Name: Flower Bed
   m_TagString: Flower bed
@@ -6204,6 +6324,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &1454188761
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454188752}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &1532726283
 GameObject:
   m_ObjectHideFlags: 0
@@ -6239,7 +6371,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 47.5, y: 0}
+  m_SizeDelta: {x: 22.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1532726285
 MonoBehaviour:
@@ -8158,7 +8290,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 47.5, y: 0}
+  m_SizeDelta: {x: 22.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2145179205
 MonoBehaviour:

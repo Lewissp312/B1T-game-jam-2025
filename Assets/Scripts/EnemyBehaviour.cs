@@ -46,7 +46,7 @@ public class EnemyBehaviour : MonoBehaviour{
 
         // check if close enough to a flower and flower bed combo
         foreach (GameObject flower in GameObject.FindGameObjectsWithTag("Flower")){
-            if (Vector2.Distance(transform.position, flower.transform.position) <= 2f){
+            if (Vector2.Distance(transform.position, flower.transform.position) <= 3f){
                 foreach (GameObject flBed in GameObject.FindGameObjectsWithTag("Flower bed")){
                     if (Vector2.Dot((flower.transform.position - transform.position).normalized, (flBed.transform.position - transform.position).normalized) >= 0.7f){
                         // means that the flower pot and flower are in the same direction so they are LIKELY overlapping

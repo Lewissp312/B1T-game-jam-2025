@@ -59,6 +59,16 @@ public class PlantGrower : MonoBehaviour
         GameUI.Instance.UpdatePlantGrowth(_plantID, MIN_GROWTH, MAX_GROWTH);
     }
 
+    void OnDisable()
+    {
+        try{
+        HealthComponent hpComp = GetComponent<HealthComponent>();
+        GameUI.Instance.UpdatePlantSprite(_plantID, null);
+        GameUI.Instance.UpdatePlantHealth(_plantID, 0, hpComp.MaxHealth);
+        GameUI.Instance.UpdatePlantGrowth(_plantID, 0, MAX_GROWTH);
+        } catch{};
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -101,8 +111,8 @@ public class PlantGrower : MonoBehaviour
 
     public void CheckIfAllPlantsDead(){
         if (GameObject.FindGameObjectsWithTag("Flower").Count() == 0){
-            GameObject.Find("GameUI").SetActive(false);
-            GameObject.Find("EndMenu").SetActive(true);
+            GameObject.FindFirstObjectByType<GameManager>().gameUI.SetActive(false);
+            GameObject.FindFirstObjectByType<GameManager>().endMenu.SetActive(true);
             Time.timeScale = 0;
             // when all the plants are dead then show the end menu
         }
