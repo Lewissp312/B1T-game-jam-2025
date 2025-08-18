@@ -9,7 +9,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<Transform> _southSpawnLocations = new();
     [SerializeField] private List<Transform> _westSpawnLocations = new();
     private int _dirIndex = 0;
-    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private GameObject _dogPrefab;
+    [SerializeField] private GameObject _pestPrefab;
 
     [SerializeField] private float _spawnInterval = 4f;
     private Unity.Mathematics.Random _random;
@@ -31,6 +32,7 @@ public class EnemySpawner : MonoBehaviour
     // ----------------------------------------------------------------------------------------------- //
 
     private IEnumerator SpawnEnemies(){
+        int numSpawns = 0; // switch between spawning dogs every even, and pests every odd
         while (true){
             // wait delay, then spawn enemy repeatedly
             yield return new WaitForSeconds(_spawnInterval);
@@ -54,9 +56,9 @@ public class EnemySpawner : MonoBehaviour
             }
             _dirIndex = (_dirIndex + 1) % 4;
 
-            
-            GameObject newEnemy = Instantiate(_enemyPrefab);
+            GameObject newEnemy = Instantiate(numSpawns % 2 == 0 ? _dogPrefab : _pestPrefab);
             newEnemy.transform.position = randomSpawnPosition;
+            numSpawns++;
         }
     }
 
