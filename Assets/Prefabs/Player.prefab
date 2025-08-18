@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2732285181753156127}
   - component: {fileID: 7533909373528480206}
   - component: {fileID: 6199062369227639716}
+  - component: {fileID: 205455586290058074}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -177,3 +178,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stick: {fileID: 0}
   _pesticide: {fileID: 0}
+--- !u!210 &205455586290058074
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970892418810986092}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0

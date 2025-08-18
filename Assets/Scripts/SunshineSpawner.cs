@@ -62,7 +62,7 @@ public class SunshineSpawner : MonoBehaviour
             Transform bedToOccupy = _availableBeds[_random.NextInt(0, _availableBeds.Count)];
             _currentBedsShinedOn.Add(bedToOccupy);
 
-            sunshine.transform.position = bedToOccupy.position;
+            sunshine.transform.position = bedToOccupy.position + new Vector3(0,0,0.5f);
             // allow the sunshine to be active for the duration, then set inactive
             sunshine.SetActive(true);
             yield return new WaitForSeconds(_random.NextFloat(_minPossibleSunshineDuration, _maxPossibleSunshineDuration));
