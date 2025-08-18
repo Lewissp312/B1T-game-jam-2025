@@ -29,9 +29,7 @@ public class EnemyBehaviour : MonoBehaviour{
     void Start()
     {
         _healthBarImg.material = new(_healthBarImg.material);
-
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        _ID = gameManager.GetID();
+        _ID = GameManager.Instance.GetEnemyID();
         // set the target
         _target = GetTarget();
     }

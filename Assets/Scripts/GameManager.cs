@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance; // defines a global reference to this class
 
     private int _enemyIDCount;
-    private int _plantIDCount = 0;
+    private int _plantIDCount;
 
     public GameObject endMenu;
     public GameObject gameUI;
@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _plantIDCount = 0;
     }
 
     // Update is called once per frame
@@ -36,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public int GetID()
+    public int GetEnemyID()
     {
         _enemyIDCount++;
         return _enemyIDCount;
@@ -60,6 +59,6 @@ public class GameManager : MonoBehaviour
         audioSource.spatialBlend = 1f;
         audioSource.volume = volume;
         audioSource.Play();
-        Object.Destroy(gameObject, clip.length * (Time.timeScale < 0.009999999776482582 ? 0.01f : Time.timeScale));
+        Destroy(gameObject, clip.length * (Time.timeScale < 0.009999999776482582 ? 0.01f : Time.timeScale));
     }    
 }

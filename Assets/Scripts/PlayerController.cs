@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip _plantSoundClip; // whenever a plant is picked up or placed down
 
 
-    private const float _speed = 10;
+    private const float _speed = 12;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour
         _walkSoundSource.mute = moveValue == Vector2.zero;
         moveValue = Vector3.Normalize(moveValue);
         _body.MovePosition((Vector2)transform.position + (_speed * Time.deltaTime * moveValue));
-        // transform.Translate(_speed * Time.deltaTime * moveValue);
     }
 
     void Update()
@@ -83,14 +82,14 @@ public class PlayerController : MonoBehaviour
                     GameManager.Instance.PlayClipAtPoint(_stickSoundClip, _stick.transform.position);
                     if (_isOnDog)
                     {
-                        DamageEnemies(_currentDogs);
+                        DamageEnemies(_currentDogs,15);
                     }
                     break;
                 case Items.PESTICIDE:
                     GameManager.Instance.PlayClipAtPoint(_pesticideSoundClip, _pesticide.transform.position);
                     if (_isOnPest)
                     {
-                        DamageEnemies(_currentPests);
+                        DamageEnemies(_currentPests,5);
                     }
                     break;
                 case Items.NONE:
@@ -182,16 +181,16 @@ public class PlayerController : MonoBehaviour
             _isOnStick = true;
             print("Collided with stick");
         }
-        if (collision.gameObject.CompareTag("Dog"))
+        if (collision.gameObject.CompareTag("Dog interact"))
         {
+            GameObject enemy = collision.transform.parent.gameObject;
+            _currentDogs.Add(enemy.GetComponent<EnemyBehaviour>().GetID(), enemy);
             _isOnDog = true;
             print("Collided with dog");
         }
         if (collision.gameObject.CompareTag("Pest interact"))
         {
             GameObject enemy = collision.transform.parent.gameObject;
-            print(enemy);
-            print(enemy.GetComponent<EnemyBehaviour>().GetID());
             _currentPests.Add(enemy.GetComponent<EnemyBehaviour>().GetID(), enemy);
             _isOnPest = true;
             print("Collided with pest");
@@ -247,12 +246,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void DamageEnemies(Dictionary<int, GameObject> enemyDict)
+    private void DamageEnemies(Dictionary<int, GameObject> enemyDict, int damage)
     {
         List<int> enemiesToRemove = new();
         foreach (KeyValuePair<int, GameObject> enemy in enemyDict)
         {
-            enemy.Value.GetComponent<HealthComponent>().TakeDamage(5);
+            enemy.Value.GetComponent<HealthComponent>().TakeDamage(damage);
             if (!enemy.Value.activeInHierarchy)
             {
                 enemiesToRemove.Add(enemy.Key);
